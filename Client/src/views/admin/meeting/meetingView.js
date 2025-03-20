@@ -20,9 +20,10 @@ const MeetingView = (props) => {
     const navigate = useNavigate()
 
     const fetchViewData = async () => {
+        console.log("info is"+info)
         if (info) {
             setIsLoding(true)
-            let result = await getApi('api/meeting/view/', info?.event ? info?.event?.id : info);
+            let result = await getApi('/api/meeting/view/', info?.event ? info?.event?.id : info);
             setData(result?.data);
             setIsLoding(false)
         }

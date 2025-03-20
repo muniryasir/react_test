@@ -16,7 +16,11 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 // Set up CORS  
-app.use(cors())
+// app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000', 
+    credentials: true,
+  }));
 //API Routes
 app.use('/api', route);
 
@@ -36,7 +40,7 @@ const server = app.listen(port, () => {
 
 
 // Connect to MongoDB
-const DATABASE_URL = process.env.DB_URL || 'mongodb://127.0.0.1:27017'
-const DATABASE = process.env.DB || 'Prolink'
+const DATABASE_URL = process.env.DB_URL || 'mongodb://admin:admin123@localhost:27017';
+const DATABASE = process.env.DB || 'React_Node_Test';
 
 db(DATABASE_URL, DATABASE);
